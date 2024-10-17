@@ -32,7 +32,7 @@ export class LoginMiddlewareRepository {
       const { data } = request;
       return data;
     } catch (error) {
-      console.log(`Middleware - Ocorreu um erro ao criar o usuaário: ${error}`);
+      console.log(`Middleware - Ocorreu um erro ao criar o usuário: ${error}`);
       throw error;
     }
   }
