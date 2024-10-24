@@ -1,10 +1,14 @@
 import { Module } from "@nestjs/common";
-import { LoginModule } from "./modules/login/login.module";
 import { ConfigModule } from "@nestjs/config";
 import { ProductsModule } from "./modules/products/products.module";
+import { UserModule } from "./modules/users/users.module";
 
 @Module({
-  imports: [ConfigModule.forRoot(), LoginModule, ProductsModule],
+  imports: [
+    ConfigModule.forRoot(),
+    ProductsModule, 
+    UserModule
+  ],
   controllers: [],
   providers: [],
 })

@@ -10,17 +10,10 @@ export class LoginMiddlewareController {
     private readonly loginMiddlewareService: LoginMiddlewareService,
   ) {}
 
-  @Post("login")
-  async userAuthentication(
-    @Body() userAuthentication: UserAuthentication,
-  ): Promise<string> {
-    return await this.loginMiddlewareService.userAuthentication(
-      userAuthentication,
-    );
+  @Post()
+  async login(@Body() userAuthentication: UserAuthentication): Promise<any> {
+      return await this.loginMiddlewareService.login(userAuthentication);
   }
 
-  @Post("create")
-  async createUser(@Body() user: User): Promise<User> {
-    return await this.loginMiddlewareService.createUser(user);
-  }
+
 }
