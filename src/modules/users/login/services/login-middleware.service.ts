@@ -10,13 +10,12 @@ export class LoginMiddlewareService {
     private readonly loginMiddlewareRepository: LoginMiddlewareRepository,
   ) {}
 
-  async userAuthentication(user: UserAuthentication): Promise<string> {
-    if (!user) throw new Error("User inválido");
-    return null;
-  }
-
   async createUser(user: User): Promise<User> {
     if (!user) throw new Error("Usuário inválido.");
     return await this.loginMiddlewareRepository.createUser(user);
+  }
+
+  async login(userAuthentication: UserAuthentication): Promise<any>{
+    return await this.loginMiddlewareRepository.userAuthentication(userAuthentication);
   }
 }
