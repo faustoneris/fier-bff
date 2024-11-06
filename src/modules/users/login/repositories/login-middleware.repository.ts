@@ -9,19 +9,13 @@ import { API_BASE_URL } from "../../../../envoriments/envoriments";
 @Injectable()
 export class LoginMiddlewareRepository {
   async userAuthentication(user: UserAuthentication): Promise<string> {
-    try {
-      const request = await axios.post(
-        `${API_BASE_URL.USERS}/api/authentication`,
-        user,
-      );
-      const { data } = request;
-      return data;
-    } catch (error) {
-      console.log(
-        `Middleware - Ocorreu um erro ao autenticar usuário: ${error}`,
-      );
-      throw error;
-    }
+    const request = await axios
+      .post(`${API_BASE_URL.USERS}/api/authentication`, user)
+      .catch((x) => {
+        throw x.response.data;
+      });
+    const { data } = request;
+    return data;
   }
   async createUser(user: User): Promise<User> {
     try {
@@ -37,18 +31,15 @@ export class LoginMiddlewareRepository {
     }
   }
 
-  async login(userAuthentication: UserAuthentication): Promise<any>{
-    try{
+  async login(userAuthentication: UserAuthentication): Promise<any> {
+    try {
       const request = await axios.post<any>(
         `${API_BASE_URL.USERS}/api/authetication`,
-        userAuthentication
+        userAuthentication,
       );
       return request.data;
-
     } catch (error) {
-      console.log(
-        `Erro na autenticação: ${error}`
-      );
+      console.log(`Erro na autenticação: ${error}`);
       throw error;
     }
   }
