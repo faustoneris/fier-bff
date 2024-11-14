@@ -30,4 +30,13 @@ export class AuctionRepository {
       });
     return request.data;
   }
+
+  async fetchAuctionBySupplierDocument(document: string): Promise<any[]> {
+    const request = await axios
+      .get(`${API_BASE_URL.PRODUCTS_AUCTION}/supplier/${document}`)
+      .catch((x) => {
+        throw x.response.data;
+      });
+    return request.data;
+  }
 }

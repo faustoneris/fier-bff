@@ -16,4 +16,8 @@ export class AuctionService {
   async acceptAuctionPropose(productId: string): Promise<boolean> {
     return await this.auctionRepository.acceptAuctionPropose(productId);
   }
+
+  async fetchAuctionBySupplierDocument(document: string): Promise<any[]> {
+    return await this.auctionRepository.fetchAuctionBySupplierDocument(document);
+  }
 }
