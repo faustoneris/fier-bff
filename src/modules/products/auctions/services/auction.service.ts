@@ -3,9 +3,17 @@ import { AuctionRepository } from "../repositories/auction.repository";
 
 @Injectable()
 export class AuctionService {
-  constructor(private readonly auctionService: AuctionRepository) {}
+  constructor(private readonly auctionRepository: AuctionRepository) {}
 
   async createAuction(auction: any): Promise<any> {
-    return await this.auctionService.createAuction(auction);
+    return await this.auctionRepository.createAuction(auction);
+  }
+
+  async refuseAuctionPropose(productId: string): Promise<boolean> {
+    return await this.auctionRepository.refuseAuctionPropose(productId);
+  }
+
+  async acceptAuctionPropose(productId: string): Promise<boolean> {
+    return await this.auctionRepository.acceptAuctionPropose(productId);
   }
 }

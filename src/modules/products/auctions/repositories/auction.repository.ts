@@ -12,4 +12,22 @@ export class AuctionRepository {
       });
     return request.data;
   }
+
+  async refuseAuctionPropose(productId: string): Promise<boolean> {
+    const request = await axios
+      .put(`${API_BASE_URL.PRODUCTS_AUCTION}/supplier/refused/${productId}`)
+      .catch((x) => {
+        throw x.response.data;
+      });
+    return request.data;
+  }
+
+  async acceptAuctionPropose(productId: string): Promise<boolean> {
+    const request = await axios
+      .put(`${API_BASE_URL.PRODUCTS_AUCTION}/supplier/accept/${productId}`)
+      .catch((x) => {
+        throw x.response.data;
+      });
+    return request.data;
+  }
 }
